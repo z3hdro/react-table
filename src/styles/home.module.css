@@ -9,11 +9,16 @@
 
 .container th, td {
     margin: 0;
-    padding: 0.5rem;
+    padding: 0.1rem 2rem;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
 }
 
 .container div {
     padding: 1rem;
+}
+
+.Link {
+    text-decoration: none;
+    color: black;
 }

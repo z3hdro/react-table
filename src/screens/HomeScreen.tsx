@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ColumnType } from '../types/MainTypes';
+import { Link } from 'react-router-dom';
+import { ColumnType, UserType } from '../types/MainTypes';
 import Table from '../components/Table';
 import fetchData from '../API/API';
 import styles from '../styles/home.module.css';
 
 export default function HomeScreen() {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<UserType[]>([]);
+
+  console.log(data);
 
   const columns: ColumnType[] = useMemo(
     () => [
-      {
-        Header: '',
-        accessor: 'checkbox',
-      },
       {
         Header: 'id',
         accessor: 'id',
@@ -20,6 +19,11 @@ export default function HomeScreen() {
       {
         Header: '',
         accessor: 'more',
+        Cell: ({ row }: any) => (
+          <Link className={styles.Link} to={`/users/${row.values.id}`}>
+            <p>Подробнее</p>
+          </Link>
+        ),
       },
       {
         Header: 'username',
@@ -36,9 +40,27 @@ export default function HomeScreen() {
       {
         Header: '',
         accessor: 'delete',
+        Cell: (tableProps) => (
+          <div
+            onClick={() => {
+              console.log('row index', tableProps.row.index);
+              const dataCopy = [...data];
+              console.log('dataCopy before', dataCopy);
+
+              dataCopy.splice(tableProps.row.index, 1);
+              console.log('dataCopy after', dataCopy);
+              setData(dataCopy);
+            }}
+            onKeyPress={() => {}}
+            role="button"
+            tabIndex={0}
+          >
+            x
+          </div>
+        ),
       },
     ],
-    [],
+    [data],
   );
 
   useEffect(() => {

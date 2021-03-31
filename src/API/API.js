@@ -10,7 +10,6 @@ export default async function fetchData(setData) {
   res
     .json()
     .then((data) => {
-      console.log(data);
       setData(data);
     })
     .catch((error) => console.log(error));

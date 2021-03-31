@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-  useTable, useSortBy, usePagination,
+  useTable, useSortBy, usePagination, useRowSelect,
 } from 'react-table';
 import TableSettings from './TableSettings';
 import { TableTypeProps } from '../types/MainTypes';
+import IndeterminateCheckbox from './Checkbox';
 
 export default function Table(props: TableTypeProps) {
   const { columns, data } = props;
@@ -23,17 +24,26 @@ export default function Table(props: TableTypeProps) {
   } = useTable({
     columns,
     data,
-    initialState: { pageIndex: 0, pageSize: 5 },
+    initialState: { pageIndex: 0, pageSize: 5, selectedRowIds: { 0: true } },
   },
   useSortBy,
-  usePagination);
-
-  console.log(useTable({
-    columns,
-    data,
-  },
-  useSortBy,
-  usePagination));
+  usePagination,
+  useRowSelect,
+  (hooks) => {
+    // eslint-disable-next-line no-shadow
+    hooks.visibleColumns.push((columns) => [
+      {
+        id: 'selection',
+        Header: () => null,
+        Cell: ({ row }: any) => (
+          <div>
+            <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+          </div>
+        ),
+      },
+      ...columns,
+    ]);
+  });
 
   return (
     <>
