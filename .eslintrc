@@ -20,7 +20,9 @@
     "no-param-reassign": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": "off",
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    "import/extensions": "off",
+    "import/no-unresolved": "off"
   },
   "settings": {
     "import/resolver": {
