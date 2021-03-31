@@ -25,7 +25,7 @@ export interface UserType {
 }
 
 export interface TableTypeProps {
-    columns: ColumnType[],
+    columns: any,
     data: UserType[],
 }
 
