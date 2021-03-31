@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-table": "^7.0.29",
     "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
