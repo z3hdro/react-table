@@ -23,7 +23,8 @@
     "import/no-named-as-default": 0,
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "no-nested-ternary": "off"
   },
   "settings": {
     "import/resolver": {

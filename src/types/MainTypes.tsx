@@ -1,5 +1,5 @@
 export interface ColumnType {
-    Header: string,
+    Header: string | (() => null),
     accessor: string,
 }
 

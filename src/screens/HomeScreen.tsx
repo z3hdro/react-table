@@ -17,7 +17,7 @@ export default function HomeScreen() {
         accessor: 'id',
       },
       {
-        Header: '',
+        Header: () => null,
         accessor: 'more',
         Cell: ({ row }: any) => (
           <Link className={styles.Link} to={`/users/${row.values.id}`}>
@@ -38,7 +38,7 @@ export default function HomeScreen() {
         accessor: 'website',
       },
       {
-        Header: '',
+        Header: () => null,
         accessor: 'delete',
         Cell: (tableProps) => (
           <div

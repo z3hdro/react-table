@@ -37,7 +37,9 @@ export default function Table(props: TableTypeProps) {
         Header: () => null,
         Cell: ({ row }: any) => (
           <div>
-            <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+            <IndeterminateCheckbox
+              {...row.getToggleRowSelectedProps()}
+            />
           </div>
         ),
       },
@@ -52,7 +54,12 @@ export default function Table(props: TableTypeProps) {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}</th>
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                  </span>
+                </th>
               ))}
             </tr>
           ))}
